@@ -11,7 +11,10 @@ try {
 }
 
 mongoose.connection
-  .once('open', () => console.log('      MongoDB Running 🌱')) // eslint-disable-line
+  .once('open', () => console.log(`      MongoDB Running 🌱
+      _____________________
+
+  `)) // eslint-disable-line
   .on('error', e => {
     throw e;
   });
