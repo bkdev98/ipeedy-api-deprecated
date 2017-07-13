@@ -77,7 +77,7 @@ var _express2 = _interopRequireDefault(_express);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const app = (0, _express2.default)();
+const app = (0, _express2.default)(); /* eslint-disable no-console */
 
 const PORT = process.env.PORT || 3000;
 

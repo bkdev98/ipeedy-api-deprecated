@@ -4,6 +4,7 @@
   "description": "Ipeedy Restful API 🐳",
   "main": "index.js",
   "scripts": {
+    "prettier": "prettier --single-quote --print-width 80 --trailing-comma all --write 'src/**/*.js'",
     "dev:build": "webpack -w",
     "dev": "cross-env NODE_ENV=development nodemon dist/index.bundle.js"
   },
@@ -29,7 +30,11 @@
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "eslint": "^4.2.0",
+    "eslint-config-equimper": "^2.2.1",
+    "eslint-config-prettier": "^2.3.0",
     "nodemon": "^1.11.0",
+    "prettier": "^1.5.2",
     "webpack": "^3.2.0",
     "webpack-node-externals": "^1.6.0"
   }

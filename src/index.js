@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
+
 import express from 'express';
 
 const app = express();
-
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, err => {
@@ -14,6 +15,6 @@ app.listen(PORT, err => {
       Running on ${process.env.NODE_ENV}
 
       Let's create greatness 🎉
-    `)
+    `);
   }
 });
