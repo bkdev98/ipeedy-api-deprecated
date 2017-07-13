@@ -1,17 +1,22 @@
+import config from './config';
+
 const devConfig = {
-  MONGO_URL: 'mongodb://localhost/ipeedy-api-dev',
+  MONGO_URL: config.MongoDevUrl,
 };
 
 const testConfig = {
-  MONGO_URL: 'mongodb://localhost/ipeedy-api-test',
+  MONGO_URL: config.MongoTestUrl,
 };
 
 const prodConfig = {
-  MONGO_URL: 'mongodb://localhost/ipeedy-api-prod',
+  MONGO_URL: config.MongoProdUrl,
 };
 
 const defaultConfig = {
   PORT: process.env.PORT || 3000,
+  ESMS_API_URL: config.EsmsApiUrl,
+  ESMS_API_KEY: config.EsmsApiKey,
+  ESMS_SECRET_KEY: config.EsmsSecretKey,
 };
 
 function envConfig(env) {

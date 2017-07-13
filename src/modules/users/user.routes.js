@@ -6,6 +6,6 @@ import userValidation from './user.validations';
 
 const routes = new Router();
 
-routes.post('/signup', validate(userValidation.signup), userController.signup);
+routes.post('/authenticate', validate(userValidation.authenticate), userController.authenticate);
 
 export default routes;

@@ -1,0 +1,8 @@
+{
+  "MongoDevUrl": "mongodb://localhost/ipeedy-api-dev",
+  "MongoTestUrl": "mongodb://localhost/ipeedy-api-test",
+  "MongoProdUrl": "",
+  "EsmsApiUrl": "http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get",
+  "EsmsApiKey": "",
+  "EsmsSecretKey": ""
+}
