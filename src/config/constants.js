@@ -1,8 +1,14 @@
-const devConfig = {};
+const devConfig = {
+  MONGO_URL: 'mongodb://localhost/ipeedy-api-dev',
+};
 
-const testConfig = {};
+const testConfig = {
+  MONGO_URL: 'mongodb://localhost/ipeedy-api-test',
+};
 
-const prodConfig = {};
+const prodConfig = {
+  MONGO_URL: 'mongodb://localhost/ipeedy-api-prod',
+};
 
 const defaultConfig = {
   PORT: process.env.PORT || 3000,
