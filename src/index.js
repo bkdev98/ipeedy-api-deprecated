@@ -2,15 +2,16 @@
 
 import express from 'express';
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+import constants from './config/constants';
 
-app.listen(PORT, err => {
+const app = express();
+
+app.listen(constants.PORT, err => {
   if (err) {
     throw err;
   } else {
     console.log(`
-      🐳  Ipeedy is ready on port ${PORT}
+      🐳  Ipeedy is ready on port ${constants.PORT}
 
       Running on ${process.env.NODE_ENV}
 
