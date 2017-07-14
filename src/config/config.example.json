@@ -4,5 +4,6 @@
   "MongoProdUrl": "",
   "EsmsApiUrl": "http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_get",
   "EsmsApiKey": "",
-  "EsmsSecretKey": ""
+  "EsmsSecretKey": "",
+  "JwtSecret": ""
 }

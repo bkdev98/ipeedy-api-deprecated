@@ -2,6 +2,7 @@ import config from './config';
 
 const devConfig = {
   MONGO_URL: config.MongoDevUrl,
+  ESMS_API_URL: 'https://59588a4fea985b08e80959b9.koor.io/requestOTP',
 };
 
 const testConfig = {
@@ -17,6 +18,7 @@ const defaultConfig = {
   ESMS_API_URL: config.EsmsApiUrl,
   ESMS_API_KEY: config.EsmsApiKey,
   ESMS_SECRET_KEY: config.EsmsSecretKey,
+  JWT_SECRET: config.JwtSecret,
 };
 
 function envConfig(env) {
@@ -33,4 +35,4 @@ function envConfig(env) {
 export default {
   ...defaultConfig,
   ...envConfig(process.env.NODE_ENV),
-}
+};

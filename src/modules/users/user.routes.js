@@ -6,6 +6,11 @@ import userValidation from './user.validations';
 
 const routes = new Router();
 
-routes.post('/authenticate', validate(userValidation.authenticate), userController.authenticate);
+routes.post(
+  '/authenticate',
+  validate(userValidation.authenticate),
+  userController.authenticate,
+);
+routes.post('/verify', validate(userValidation.verify), userController.verify);
 
 export default routes;

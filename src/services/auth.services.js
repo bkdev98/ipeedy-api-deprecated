@@ -2,8 +2,8 @@ import axios from 'axios';
 
 import constants from '../config/constants';
 
-export const requestOTP = async (phone) => {
-  const code = Math.floor((Math.random() * 8999 + 1000));
+export const requestOTP = async phone => {
+  const code = Math.floor(Math.random() * 8999 + 1000);
 
   const result = await axios.get(constants.ESMS_API_URL, {
     params: {
@@ -12,11 +12,11 @@ export const requestOTP = async (phone) => {
       SmsType: 6,
       Phone: phone,
       Content: `Your Ipeedy code is ${code}`,
-    }
+    },
   });
 
   return {
     ...result.data,
     code,
   };
-}
+};
