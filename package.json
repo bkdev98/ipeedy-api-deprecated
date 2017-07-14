@@ -4,8 +4,9 @@
   "description": "Ipeedy Restful API 🐳",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf dist",
     "prettier": "prettier --single-quote --print-width 80 --trailing-comma all --write 'src/**/*.js'",
-    "dev:build": "webpack -w",
+    "dev:build": "yarn run clean && webpack -w",
     "dev": "cross-env NODE_ENV=development nodemon dist/index.bundle.js"
   },
   "repository": {
@@ -46,6 +47,7 @@
     "morgan": "^1.8.2",
     "nodemon": "^1.11.0",
     "prettier": "^1.5.2",
+    "rimraf": "^2.6.1",
     "webpack": "^3.2.0",
     "webpack-node-externals": "^1.6.0"
   }
