@@ -14,5 +14,6 @@ routes.post(
   validate(productValidation.create),
   productController.createProduct
 );
+routes.get('/:id', authenticate, productController.getProductById);
 
 export default routes;

@@ -11,3 +11,13 @@ export async function createProduct(req, res) {
     return res.status(HTTPStatus.BAD_REQUEST).json(err);
   }
 }
+
+export async function getProductById(req, res) {
+  try {
+    const product = await Product.findById(req.params.id).populate('user');
+
+    return res.status(HTTPStatus.OK).json(product);
+  } catch (err) {
+    return res.status(HTTPStatus.BAD_REQUEST).json(err);
+  }
+}
