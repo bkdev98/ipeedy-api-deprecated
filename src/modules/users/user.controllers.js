@@ -53,3 +53,13 @@ export async function verify(req, res) {
     return res.status(HTTPStatus.BAD_REQUEST).json(error);
   }
 }
+
+export async function getUserById(req, res) {
+  try {
+    const user = await User.findById(req.params.id);
+
+    return res.status(HTTPStatus.OK).json(user);
+  } catch (err) {
+    return res.status(HTTPStatus.BAD_REQUEST).json(err);
+  }
+}
