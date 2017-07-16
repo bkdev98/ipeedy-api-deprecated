@@ -4,7 +4,7 @@ import Product from './product.model';
 
 export async function createProduct(req, res) {
   try {
-    const product = await Product.create(req.body);
+    const product = await Product.createProduct(req.body, req.user._id);
 
     return res.status(HTTPStatus.OK).json(product);
   } catch (err) {

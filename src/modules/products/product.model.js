@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+import slug from 'slug';
 
 const ProductSchema = new Schema(
   {
@@ -9,9 +10,18 @@ const ProductSchema = new Schema(
       minlength: [4, 'Name need to be longer than 4!'],
       maxlength: [25, 'Name need to be shorter than 25!'],
     },
+    slug: {
+      type: String,
+      trim: true,
+      lowercase: true,
+    },
     category: {
       type: String,
       trim: true,
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
     },
     images: [
       {
@@ -40,10 +50,39 @@ const ProductSchema = new Schema(
       }
     ],
     coordinate: {
-      latitude: String,
-      longitude: String,
+      latitude: {
+        type: Number,
+        required: true,
+      },
+      longitude: {
+        type:Number,
+        required: true,
+      },
     }
+  },
+  {
+    timestamps: true,
   }
 );
+
+ProductSchema.pre('validate', function(next) {
+  this._slugify();
+  next();
+});
+
+ProductSchema.methods = {
+  _slugify() {
+    this.slug = slug(`${this.name}-${this._id}`);
+  }
+}
+
+ProductSchema.statics = {
+  createProduct(args, user) {
+    return this.create({
+      ...args,
+      user,
+    });
+  }
+}
 
 export default mongoose.model('Product', ProductSchema);
