@@ -1,6 +1,17 @@
 import mongoose, { Schema } from 'mongoose';
 import slug from 'slug';
 
+const GeoSchema = new Schema({
+  type: {
+    type: String,
+    default: 'point',
+  },
+  coordinates: {
+    type: [Number],
+    index: '2dsphere',
+  },
+});
+
 const ProductSchema = new Schema(
   {
     name: {
@@ -27,7 +38,7 @@ const ProductSchema = new Schema(
       {
         type: String,
         trim: true,
-      }
+      },
     ],
     price: {
       type: Number,
@@ -47,22 +58,13 @@ const ProductSchema = new Schema(
       {
         type: String,
         trim: true,
-      }
+      },
     ],
-    coordinate: {
-      latitude: {
-        type: Number,
-        required: true,
-      },
-      longitude: {
-        type:Number,
-        required: true,
-      },
-    }
+    geometry: GeoSchema,
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 ProductSchema.pre('validate', function(next) {
@@ -73,8 +75,8 @@ ProductSchema.pre('validate', function(next) {
 ProductSchema.methods = {
   _slugify() {
     this.slug = slug(`${this.name}-${this._id}`);
-  }
-}
+  },
+};
 
 ProductSchema.statics = {
   createProduct(args, user) {
@@ -82,7 +84,7 @@ ProductSchema.statics = {
       ...args,
       user,
     });
-  }
-}
+  },
+};
 
 export default mongoose.model('Product', ProductSchema);

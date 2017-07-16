@@ -12,8 +12,9 @@ routes.post(
   '/create',
   authenticate,
   validate(productValidation.create),
-  productController.createProduct
+  productController.createProduct,
 );
 routes.get('/:id', authenticate, productController.getProductById);
+routes.get('/', authenticate, productController.getNearbyProduct);
 
 export default routes;

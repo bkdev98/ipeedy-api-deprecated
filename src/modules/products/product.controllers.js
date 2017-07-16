@@ -21,3 +21,26 @@ export async function getProductById(req, res) {
     return res.status(HTTPStatus.BAD_REQUEST).json(err);
   }
 }
+
+export async function getNearbyProduct(req, res) {
+  try {
+    const longitude = parseFloat(req.query.lng);
+    const latitude = parseFloat(req.query.lat);
+    const distance = parseInt(req.query.distance, 10);
+
+    const products = await Product.geoNear(
+      {
+        type: 'Point',
+        coordinates: [longitude, latitude],
+      },
+      {
+        maxDistance: distance || 5000,
+        spherical: true,
+      },
+    );
+
+    return res.status(HTTPStatus.OK).json(products);
+  } catch (err) {
+    return res.status(HTTPStatus.BAD_REQUEST).json(err);
+  }
+}

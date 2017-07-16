@@ -6,5 +6,5 @@ export default {
     category: Joi.string(),
     price: Joi.number().required(),
     description: Joi.string().min(10).max(50).required(),
-  }
-}
+  },
+};
