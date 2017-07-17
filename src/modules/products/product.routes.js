@@ -9,7 +9,7 @@ import productValidation from './product.validations';
 const routes = new Router();
 
 routes.post(
-  '/create',
+  '/',
   authenticate,
   validate(productValidation.create),
   productController.createProduct,
