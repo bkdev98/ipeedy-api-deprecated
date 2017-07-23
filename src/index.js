@@ -21,6 +21,10 @@ apiRoutes(app);
 
 app.listen(constants.PORT, err => {
   if (err) {
+    notifier.notify({
+      title: 'Ipeedy API',
+      message: '🤕 Ipeedy service failed to start!',
+    });
     throw err;
   } else {
     notifier.notify({
