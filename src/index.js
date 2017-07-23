@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 
 import express from 'express';
+import notifier from 'node-notifier';
 
 import constants from './config/constants';
 import './config/database';
@@ -22,6 +23,10 @@ app.listen(constants.PORT, err => {
   if (err) {
     throw err;
   } else {
+    notifier.notify({
+      title: 'Ipeedy API',
+      message: '🐳 Ipeedy service are ready!',
+    });
     console.log(`
       🐳  Ipeedy is ready on port ${constants.PORT}
 

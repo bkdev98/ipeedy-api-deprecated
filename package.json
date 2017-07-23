@@ -34,6 +34,7 @@
     "joi": "^10.6.0",
     "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.11.1",
+    "node-notifier": "^5.1.2",
     "slug": "^0.9.1",
     "validator": "^8.0.0"
   },
