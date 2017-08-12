@@ -27,8 +27,7 @@ const ProductSchema = new Schema(
       lowercase: true,
     },
     category: {
-      type: String,
-      trim: true,
+      type: Schema.Types.ObjectId,
     },
     user: {
       type: Schema.Types.ObjectId,
@@ -69,6 +68,7 @@ const ProductSchema = new Schema(
 
 ProductSchema.pre('validate', function(next) {
   this._slugify();
+  this._categorify();
   next();
 });
 
@@ -76,14 +76,23 @@ ProductSchema.methods = {
   _slugify() {
     this.slug = slug(`${this.name}-${this._id}`);
   },
+  _categorify() {
+    this.category = new mongoose.mongo.ObjectId(this.category);
+  },
 };
 
 ProductSchema.statics = {
   createProduct(args, user) {
     return this.create({
       ...args,
+      category: mongoose.Types.ObjectId(args.category),
       user,
     });
+  },
+  async findByCategory(id) {
+    const products = await this.find({ category: id });
+
+    return products;
   },
 };
 

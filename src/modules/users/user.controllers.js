@@ -20,6 +20,10 @@ export async function authenticate(req, res) {
       });
     }
 
+    console.log('====================================');
+    console.log(result.code);
+    console.log('====================================');
+
     user.code = result.code;
 
     return res.status(HTTPStatus.OK).json(await user.save());

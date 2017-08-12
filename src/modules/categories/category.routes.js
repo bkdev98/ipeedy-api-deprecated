@@ -14,5 +14,6 @@ routes.post(
   validate(categoryValidation.create),
   categoryController.createCategory,
 );
+routes.get('/:id', authenticate, categoryController.getCategoryById);
 
 export default routes;
